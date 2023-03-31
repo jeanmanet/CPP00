@@ -5,24 +5,26 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jmanet <jmanet@student.42nice.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/12/01 17:05:26 by jmanet            #+#    #+#              #
-#    Updated: 2022/12/03 11:51:19 by jmanet           ###   ########.fr        #
+#    Created: 2022/12/03 12:27:10 by jmanet            #+#    #+#              #
+#    Updated: 2023/03/31 12:12:51 by jmanet           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = megaphone
+NAME = phonebook
 
-FLAGS = -Wall -Werror -Wextra -std=c++98
+FLAGS = -Wall -Werror -Wextra -std=c++98 -g
 
-SRCS = megaphone.cpp
+SRCS = ${wildcard *.cpp}
 
 OBJS = ${SRCS:.cpp=.o}
+
+HEADERS = ${wildcard *.hpp}
 
 CC = g++
 
 all : ${NAME}
 
-${NAME} : ${OBJS}
+${NAME} : ${OBJS} ${HEADERS}
 	${CC} ${FLAGS} ${SRCS} -o ${NAME}
 
 

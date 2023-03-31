@@ -6,33 +6,24 @@
 /*   By: jmanet <jmanet@student.42nice.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 16:57:35 by jmanet            #+#    #+#             */
-/*   Updated: 2022/12/03 12:18:51 by jmanet           ###   ########.fr       */
+/*   Updated: 2023/03/31 14:15:04 by jmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include <fstream>
 #include <string>
 
-int main(int argc, char **argv)
-{
-	std::string message;
-	int	i;
-
-	i = 0;
-	if (argc > 1)
-	{
-		while (i < argc - 1)
-		{
-			message += argv[i + 1];
-			i++;
+int	main(int ac, char **av) {
+	if (ac == 1)
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
+	else {
+		for (int i = 1; av[i]; i++) {
+			for (int j = 0; av[i][j]; j++)
+				std::cout << (char) toupper(av[i][j]);
+			if (i < ac - 1)
+				std::cout << ' ';
 		}
 	}
-	else
-		message = "* loud and unbearable feedback noise *";
-	std::transform(message.begin(), message.end(), message.begin(), toupper);
-	std::cout << message <<std::endl;
-	return (0);
+	std::cout << std::endl;
+	return (EXIT_SUCCESS);
 }
-
-
